@@ -95,6 +95,36 @@ def merge_sort(arr):
     arr = merge(low, high)
     return arr
 
+
+def real_merge(A, B):
+    combined = []
+
+    while a < len(A) and b < len(B):
+        if A[a] < B[b]:
+            combined.append(A[a])
+            a += 1
+        else:
+            combined.append(B[b])
+            b += 1
+    while a < len(A):
+        combined.append(A[a])
+        a += 1
+    while b < len(B):
+        combined.append(B[b])
+        b += 1
+
+    return combined
+
+
+def real_merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left = real_merge_sort(arr[:mid])
+        right = real_merge_sort(arr[mid:])
+        arr = merge(left, right)
+
+    return arr
+
 # implement an in-place merge sort algorithm
 
 
